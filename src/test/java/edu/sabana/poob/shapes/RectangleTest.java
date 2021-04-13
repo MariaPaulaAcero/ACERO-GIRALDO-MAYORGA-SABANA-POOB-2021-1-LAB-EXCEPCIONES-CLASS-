@@ -3,8 +3,7 @@ package edu.sabana.poob.shapes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RectangleTest {
 
@@ -14,55 +13,71 @@ public class RectangleTest {
     private static Rectangle r4;
 
     @BeforeAll
-    public static void setUp() {
-        r1 = new Rectangle(10.0,12.0);
+    public static void setUp () throws ShapeException {
+        r1 = new Rectangle();
         r2 = new Rectangle(14.5,20.0);
         r3 = new Rectangle("blue",25.5,40.0);
-        r4 = new Rectangle(3.0,1.0);
+        r4 = new Rectangle("red");
     }
 
     @Test
     public void shouldCalculateArea() {
-        assertEquals(120, (int) r1.getArea());
+        assertEquals(1, (int) r1.getArea());
         assertEquals(290, (int) r2.getArea());
         assertEquals(1020, (int) r3.getArea());
-        assertEquals(3, (int) r4.getArea());
+        assertEquals(0, (int) r4.getArea());
 
     }
 
     @Test
     public void shouldCalculatePerimeter() {
 
-        assertEquals(44, (int) r1.getPerimeter());
+        assertEquals(4, (int) r1.getPerimeter());
         assertEquals(69, (int) r2.getPerimeter());
         assertEquals(131, (int) r3.getPerimeter());
-        assertEquals(8, (int) r4.getPerimeter());
+        assertEquals(0, (int) r4.getPerimeter());
     }
     @Test
     public void shouldCalculateDiagonal() {
-        assertEquals(4, (int) r1.getDiagonal());
+        assertEquals(1, (int) r1.getDiagonal());
         assertEquals(5, (int) r2.getDiagonal());
         assertEquals(8, (int) r3.getDiagonal());
-        assertEquals(2, (int) r4.getDiagonal());
+        assertEquals(0, (int) r4.getDiagonal());
 
     }
 
     @Test
     public void shouldPrintRectangle() {
-
-
-        assertEquals("This is a Rectangle with color NONE and width 10.0 and lenght 12.0", r1.toString());
+        assertEquals("This is a Rectangle with color NONE and width 1.0 and lenght 1.0", r1.toString());
         assertEquals("This is a Rectangle with color NONE and width 14.5 and lenght 20.0", r2.toString());
         assertEquals("This is a Rectangle with color blue and width 25.5 and lenght 40.0", r3.toString());
-        assertEquals("This is a Rectangle with color NONE and width 3.0 and lenght 1.0", r4.toString());
+        assertEquals("This is a Rectangle with color red and width 0.0 and lenght 0.0", r4.toString());
     }
     @Test
     public void shouldPrintRectangle2D() {
-        assertTrue(r1.toStringGeometricShape2D().contains("This is a Triangle"));
-        assertTrue(r2.toStringGeometricShape2D().contains("This is a Triangle"));
-        assertTrue(r3.toStringGeometricShape2D().contains("This is a Triangle"));
-        assertTrue(r4.toStringGeometricShape2D().contains("This is a Triangle"));
+        assertTrue(r1.toStringGeometricShape2D().contains("This is a Rectangle"));
+        assertTrue(r2.toStringGeometricShape2D().contains("This is a Rectangle"));
+        assertTrue(r3.toStringGeometricShape2D().contains("This is a Rectangle"));
+        assertTrue(r4.toStringGeometricShape2D().contains("This is a Rectangle"));
+    }
+    @Test
+    public void shouldNorCreateRectangleWithRadiusNegative() {
+
+        try {
+            new Rectangle(-1,-1);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
         }
+    }
+
+    @Test
+    public void shouldNorCreateRectangleWithRadiusZero() {// lo hice de otra forma
+        try {
+            new Rectangle(0,0);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
 
 
 }

@@ -3,8 +3,7 @@ package edu.sabana.poob.shapes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CylinderTest {
 
@@ -21,7 +20,7 @@ public class CylinderTest {
 
     @Test
     public void shouldCalculateArea() {
-        assertEquals(314, (int) c1.getArea());
+        assertEquals(3, (int) c1.getArea());
         assertEquals(660, (int) c2.getArea());
         assertEquals(1735, (int) c3.getArea());
     }
@@ -29,7 +28,7 @@ public class CylinderTest {
     @Test
     public void shouldCalculatePerimeter() {
 
-        assertEquals(62, (int) c1.getPerimeter());
+        assertEquals(6, (int) c1.getPerimeter());
         assertEquals(91, (int) c2.getPerimeter());
         assertEquals(147, (int) c3.getPerimeter());
     }
@@ -37,25 +36,24 @@ public class CylinderTest {
     @Test
     public void shouldCalculateDiameter() {
 
-        assertEquals(20, (int) c1.getDiameter());
+        assertEquals(2, (int) c1.getDiameter());
         assertEquals(29, (int) c2.getDiameter());
         assertEquals(47, (int) c3.getDiameter());
     }
-
     @Test
     public void shouldCalculateVolume() {
 
         assertEquals(3, (int) c1.getVolume());
-        assertEquals(4310, (int) c2.getVolume());
-        assertEquals(15522, (int) c3.getVolume());
+        assertEquals(13542, (int) c2.getVolume());
+        assertEquals(73050, (int) c3.getVolume());
     }
 
     @Test
     public void shouldCalculateSuperficialArea() {
 
         assertEquals(12, (int) c1.getSuperficialArea());
-        assertEquals(3188, (int) c2.getSuperficialArea());
-        assertEquals(3462, (int) c3.getSuperficialArea());
+        assertEquals(3189, (int) c2.getSuperficialArea());
+        assertEquals(9687, (int) c3.getSuperficialArea());
     }
 
     @Test
@@ -64,5 +62,21 @@ public class CylinderTest {
         assertTrue(c1.toStringGeometricShape2D().contains("This is a Cylinder"));
         assertTrue(c2.toStringGeometricShape2D().contains("This is a Cylinder"));
         assertTrue(c3.toStringGeometricShape2D().contains("This is a Cylinder"));
+    }
+    @Test
+    public void shouldNorCreateCircleWithRadiusNegative() {
+
+        try {
+            new Cylinder(-1,-1);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldNorCreateCylinderWithRadiusZeroOrHeightZero() {
+
+        Exception e = assertThrows(ShapeException.class, () -> new Cylinder(0,0));
+        assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
     }
 }

@@ -12,7 +12,7 @@ public class PyramidTest {
     private static Pyramid p3;
     private static Pyramid p4;
     @BeforeAll
-    public static void setUp() {
+    public static void setUp() throws ShapeException{
 
         p1 = new Pyramid();
         p2 = new Pyramid(14.0,14.5,14.0,20.0);
@@ -59,6 +59,24 @@ public class PyramidTest {
         assertTrue(p2.toStringGeometricShape3D().contains("This is a Pyramid"));
         assertTrue(p3.toStringGeometricShape3D().contains("This is a Pyramid"));
         assertTrue(p4.toStringGeometricShape3D().contains("This is a Pyramid"));
+    }
+    @Test
+    public void shouldNorCreatePyramidWithRadiusNegative() {
+
+        try {
+            new Pyramid(-1,-1,-1,-1);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldNorCreatePyramidWithRadiusZero() {// lo hice de otra forma
+        try {
+            new Pyramid(0,0,0,0);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
     }
 
 }

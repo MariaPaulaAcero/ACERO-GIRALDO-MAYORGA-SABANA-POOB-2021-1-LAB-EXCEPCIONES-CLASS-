@@ -11,7 +11,7 @@ public class Triangle extends Shape implements GeometricShape2D {
         this.side2=1.0;
         this.side3=1.0;
     }
-    public Triangle(double side1, double side2, double side3){
+    public Triangle(double side1, double side2, double side3)throws ShapeException {
         this.side1=side1;
         this.side2=side2;
         this.side3=side3;
@@ -20,10 +20,6 @@ public class Triangle extends Shape implements GeometricShape2D {
         super(color);
     }
 
-    @Override
-    public double getDiameter() {
-        return 0;
-    }
 
     public Triangle(String color, double side1, double side2, double side3){
         super(color);

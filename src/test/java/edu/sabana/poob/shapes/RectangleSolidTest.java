@@ -14,7 +14,7 @@ public class RectangleSolidTest {
     private static RectangleSolid r4;
 
     @BeforeAll
-    public static void setUp() {
+    public static void setUp() throws ShapeException{
         r1 = new RectangleSolid();
         r2 = new RectangleSolid(14.5,20.0,24.0);
         r3 = new RectangleSolid(24.0,26.0,"blue",28.0);
@@ -72,5 +72,24 @@ public class RectangleSolidTest {
         assertTrue(r3.toStringGeometricShape3D().contains("This is a RectangleSolid"));
         assertTrue(r4.toStringGeometricShape3D().contains("This is a RectangleSolid"));
         }
+
+    @Test
+    public void shouldNorCreateRectangleWithRadiusNegative() {
+
+        try {
+            new RectangleSolid(-1,-1,-1);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
+
+    @Test
+    public void shouldNorCreateRectangleWithRadiusZero() {// lo hice de otra forma
+        try {
+            new RectangleSolid(0,0,0);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
 
 }

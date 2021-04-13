@@ -3,18 +3,18 @@ package edu.sabana.poob.shapes;
 public class Pyramid extends Triangle implements GeometricShape3D{
     private double height;
 
-    public Pyramid (){
+    public Pyramid(){
         this.height=1.0;
     }
     public Pyramid(String color) {
         super(color);
     }
-    public Pyramid(double side1,double side2, double side3, double height) {
+    public Pyramid(double side1, double side2, double side3, double height) throws ShapeException{
         super(side1,side2,side3);
         this.height = height;
     }
 
-    public Pyramid(double side1,double side2, double side3, double height,String color) {
+    public Pyramid(double side1, double side2, double side3, double height, String color) {
         super(color,side1,side2,side3);
         this.height = height;
     }

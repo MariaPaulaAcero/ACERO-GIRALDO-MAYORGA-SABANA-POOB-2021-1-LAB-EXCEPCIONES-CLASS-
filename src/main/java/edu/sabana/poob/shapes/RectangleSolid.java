@@ -3,18 +3,18 @@ package edu.sabana.poob.shapes;
 public class RectangleSolid extends Rectangle implements GeometricShape3D{
     private double depth;
 
-    public RectangleSolid (){
+    public RectangleSolid(){
         this.depth=1.0;
     }
     public RectangleSolid(String color) {
         super(color);
     }
-    public RectangleSolid(double width, double lenght,double depth) {
+    public RectangleSolid(double width, double lenght, double depth)throws ShapeException {
         super(width,lenght);
         this.depth = depth;
     }
 
-    public RectangleSolid(double width, double lenght,String color, double depth) {
+    public RectangleSolid(double width, double lenght, String color, double depth) {
         super(color,width,lenght);
         this.depth = depth;
     }

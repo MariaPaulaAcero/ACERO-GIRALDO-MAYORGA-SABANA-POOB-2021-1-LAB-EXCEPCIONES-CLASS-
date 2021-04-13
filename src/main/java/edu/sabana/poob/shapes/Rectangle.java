@@ -9,6 +9,7 @@ public class Rectangle extends  Shape implements GeometricShape2D {
         this.lenght = 1.0;
 
     }
+
     public Rectangle(String color, double width, double lenght) {
         super(color);
         this.width = width;
@@ -26,11 +27,10 @@ public class Rectangle extends  Shape implements GeometricShape2D {
     public double getWidth() {
         return width;
     }
-
     public double getLenght() {
         return lenght;
     }
-    public Rectangle(double width, double lenght) {
+    public Rectangle(double width, double lenght)throws ShapeException {
         this.width = width;
         this.lenght = lenght;
     }
@@ -50,11 +50,6 @@ public class Rectangle extends  Shape implements GeometricShape2D {
     public double getPerimeter() {
         double perimeter = 2 * (this.width + this.lenght);
         return perimeter;
-    }
-
-    @Override
-    public double getDiameter() {
-        return 0;
     }
 
     public String toString() {

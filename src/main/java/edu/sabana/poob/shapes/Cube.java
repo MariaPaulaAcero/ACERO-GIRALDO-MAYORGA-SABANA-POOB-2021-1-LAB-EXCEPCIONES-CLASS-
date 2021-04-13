@@ -7,13 +7,13 @@ public class Cube extends RectangleSolid{
     public Cube() {
         side1 =1.0;
     }
-    public Cube (String color){
+    public Cube(String color){
         super(color);
     }
-    public Cube (double side1){
+    public Cube(double side1)throws ShapeException{
         this.side1= side1;
     }
-    public Cube (String color,double side1){
+    public Cube(String color, double side1){
         super(color);
         this.side1=side1;
     }

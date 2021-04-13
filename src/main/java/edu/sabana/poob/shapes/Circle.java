@@ -8,7 +8,7 @@ public class Circle extends Shape implements GeometricShape2D {
 
     public static final double PI=3.142;
 
-    private double radius;
+    double radius;
 
     public Circle() {
         this.radius = 1.0;

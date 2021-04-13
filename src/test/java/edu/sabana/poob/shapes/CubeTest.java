@@ -13,7 +13,7 @@ public class CubeTest {
     private static Cube c4;
 
     @BeforeAll
-    public static void setUp() {
+    public static void setUp() throws ShapeException{
         c1 = new Cube();
         c2 = new Cube("Black",20.0);
         c3 = new Cube(25.0);
@@ -44,16 +44,25 @@ public class CubeTest {
         assertEquals(0, (int) c4.getPerimeter());
     }
 
-   /* @Test
-    public void shouldPrintCube() {
+    @Test
+    public void shouldNorCreateCubeWithRadiusNegative() {
 
-
-        assertEquals("This is a Cube with color NONE and width 1.0 and lenght 1.0", c1.toString());
-        assertEquals("This is a Cube with color NONE and width 20.0 and lenght 20.0", c2.toString());
-        assertEquals("This is a Cube with color Black and width 25.0 and lenght 25.0", c3.toString());
-        assertEquals("This is a Cube with color Red and width 0.0 and lenght 0.0", c4.toString());
+        try {
+            new Cube(-1);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
     }
 
-    */
+    @Test
+    public void shouldNorCreateCubeWithRadiusZero() {// lo hice de otra forma
+        try {
+            new Cube(0);
+        } catch (ShapeException e) {
+            assertEquals(ShapeException.BAD_DIMENSION_SIDE, e.getMessage());
+        }
+    }
+
+
 
 }

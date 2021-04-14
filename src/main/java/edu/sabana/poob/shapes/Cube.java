@@ -11,6 +11,10 @@ public class Cube extends RectangleSolid{
         super(color);
     }
     public Cube(double side1)throws ShapeException{
+        if (side1 <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+
         this.side1= side1;
     }
     public Cube(String color, double side1){

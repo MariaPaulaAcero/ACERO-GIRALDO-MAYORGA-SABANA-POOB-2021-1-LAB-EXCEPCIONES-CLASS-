@@ -31,9 +31,17 @@ public class Rectangle extends  Shape implements GeometricShape2D {
         return lenght;
     }
     public Rectangle(double width, double lenght)throws ShapeException {
-        this.width = width;
-        this.lenght = lenght;
+        if (width <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+        this.width= width;
+
+        if (lenght <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+        this.lenght= lenght;
     }
+
 
     public Rectangle(String color) {
         super(color);

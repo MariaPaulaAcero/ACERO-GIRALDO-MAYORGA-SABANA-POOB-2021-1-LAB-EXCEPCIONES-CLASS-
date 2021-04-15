@@ -9,11 +9,30 @@ public class Rectangle extends  Shape implements GeometricShape2D {
         this.lenght = 1.0;
 
     }
+    public Rectangle(double width, double lenght)throws ShapeException {
+        if (width <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
 
-    public Rectangle(String color, double width, double lenght) {
+        this.width= width;
+
+        if (lenght <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+        this.lenght= lenght;
+    }
+
+    public Rectangle(String color, double width, double lenght) throws ShapeException {
         super(color);
-        this.width = width;
-        this.lenght = lenght;
+        if (width <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+        this.width= width;
+
+        if (lenght <= 0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
+
+        this.lenght= lenght;
+
 
     }
 
@@ -30,17 +49,7 @@ public class Rectangle extends  Shape implements GeometricShape2D {
     public double getLenght() {
         return lenght;
     }
-    public Rectangle(double width, double lenght)throws ShapeException {
-        if (width <= 0)
-            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
 
-        this.width= width;
-
-        if (lenght <= 0)
-            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
-
-        this.lenght= lenght;
-    }
 
 
     public Rectangle(String color) {

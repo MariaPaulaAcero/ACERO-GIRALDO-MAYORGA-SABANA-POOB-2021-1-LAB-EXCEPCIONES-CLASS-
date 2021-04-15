@@ -11,11 +11,15 @@ public class Pyramid extends Triangle implements GeometricShape3D{
     }
     public Pyramid(double side1, double side2, double side3, double height) throws ShapeException{
         super(side1,side2,side3);
+        if(height<=0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
         this.height = height;
     }
 
-    public Pyramid(double side1, double side2, double side3, double height, String color) {
+    public Pyramid(double side1, double side2, double side3, double height, String color)throws ShapeException{
         super(color,side1,side2,side3);
+        if(height<=0)
+            throw new ShapeException(ShapeException.BAD_DIMENSION_SIDE);
         this.height = height;
     }
     public double getPerimeter (){

@@ -1,6 +1,8 @@
 package edu.sabana.poob.sabanapayroll;
 
 import com.github.javafaker.Faker;
+import edu.sabana.poob.shapes.Cube;
+import edu.sabana.poob.shapes.ShapeException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

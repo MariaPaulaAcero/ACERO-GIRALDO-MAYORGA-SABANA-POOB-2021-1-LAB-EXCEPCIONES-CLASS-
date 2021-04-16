@@ -20,4 +20,9 @@ public class EmployeeByHours extends Employee {
     public String toString() {
         return super.toString() + " payment by hours.";
     }
+
+    @Override
+    public boolean assignFamilyCompensation(IFamilyCompensationFund familyCompensationFund) {
+        return false;
+    }
 }

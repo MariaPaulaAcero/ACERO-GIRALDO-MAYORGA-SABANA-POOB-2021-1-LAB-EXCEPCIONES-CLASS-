@@ -39,11 +39,12 @@ public class CafamFund implements IFamilyCompensationFund {
             if(id.equals(e.getId())){
                 registeredEmployees.remove(e);
                 result = true;
-            }else if (!registeredEmployees.contains(id)){
+            }
+
+            else if (!registeredEmployees.contains(id)){
                 throw new FamilyCompensationFundException(FamilyCompensationFundException.EMPLOYEE_IS_NOT_REGISTERED);
             }
         }
-
 
         return result;
     }

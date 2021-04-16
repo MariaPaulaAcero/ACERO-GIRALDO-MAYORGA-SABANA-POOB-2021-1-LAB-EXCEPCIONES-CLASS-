@@ -1,3 +1,4 @@
+
 package edu.sabana.poob.sabanapayroll;
 
 public class FamilyCompensationFundException extends Exception{

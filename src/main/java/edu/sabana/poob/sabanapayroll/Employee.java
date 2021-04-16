@@ -35,4 +35,7 @@ public abstract class Employee {
         return lastName;
     }
 
+    public abstract void assignFamilyCompensation(IFamilyCompensationFund iFamilyCompensationFund);
+
+    public abstract void depositToEmployee(BankAccount account, Check check, double amount);
 }
